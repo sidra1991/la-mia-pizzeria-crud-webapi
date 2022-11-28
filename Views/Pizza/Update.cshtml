@@ -1,0 +1,78 @@
+﻿@using la_mia_pizzeria_static.Models.Forms
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    int index = 1;
+}
+@model PizzaForm;
+
+<div class="container">
+    <form asp-controller="Pizza" asp-action="Update" asp-route-id="@Model.Pizza.Id" method="post">
+
+            <div class="mb-3" >
+                <label for="category"> seleziona la categoria </label>
+                <select  asp-for="Pizza.CategoryId" rows="10">
+                    @foreach (Category category in Model.Categories)
+                    {
+                        if(index > 1 ){
+
+                            <option name="category" value="@category.Id">@category.Name</option>
+                        }
+                        index++;
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="ingredient"> seleziona gli ingredienti </label>
+                <select  asp-for="SelectIngredient" multiple="multiple" size="10" class="form-control mb-2 mr-sm-2 ml-sm-3 leftList">
+                        @foreach (var item in Model.Ingredients)
+                        {
+                            <option name="ingredient" value="@item.Id">@item.Name</option>
+                        }
+
+                </select>
+
+             </div>
+
+
+            <div class="mb-3">
+                <img src="@Model.Pizza.ImageAddress" />
+                <p class="text-danger">per cambiare inserire nuovo url</p>
+                <div class="d-inline-block">
+                    <label for="Immage" class="form-label">Immagine</label>
+                    <input asp-for="Pizza.ImageAddress" class="form-control" aria-describedby="emailHelp" />
+                    <span asp-validation-for="Pizza.ImageAddress" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="Name" class="form-label">Nome</label>
+            <input asp-for="Pizza.Name" class="form-control" placeholder="@Model.Pizza.Name" />
+            <span asp-validation-for="Pizza.Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 form-check">
+                <label for="Price" class="form-label">prezzo</label>
+            <input type="number" asp-for="Pizza.Price" placeholder="@Model.Pizza.Price" />
+            <span asp-validation-for="Pizza.Price" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <div>
+                    @Model.Pizza.Description
+                </div>
+                <p class="text-danger">per cambiare inserire nuovo url</p>
+            
+                <label for="Description" class="form-label">Descrizione</label>
+            <textarea asp-for="Pizza.Description" rows="10"></textarea>
+            <span asp-validation-for="Pizza.Description" class="text-danger"></span>
+            </div>
+
+            <input type="submit" class="btn btn-small btn-success" value="Salva">
+
+    </form>
+</div>
+            

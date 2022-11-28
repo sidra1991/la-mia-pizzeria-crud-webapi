@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+
+}
+
+
+    @model List<Pizza>
+
+
+<h1 style="text-align:center">le mie pizze</h1>
+<div class="container p-2 border-2 " style="margin-top:20px;">
+    @if (Model.Count > 0)
+    {
+        <table class=" table table-striped table-bordered border-primary">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td> 
+                            <img src="@item.ImageAddress" class="card-img-top" alt="..." style="width:200px;">
+                            <div class ="d-inline-block">
+                                <h1>@item.Name @item.Price €</h1>
+                                <p>@item.Description</p>
+                            </div>
+
+                        </td>
+
+                        <td>
+                            <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@item.Id" method="post">
+                                <button class="btn btn-danger" type="submit" style=" width:100px;">
+                                    elimina
+                                </button>
+                            </form>
+                            <a class="btn btn-success d-block" style=" width:100px;" href="@Url.Action("Update",new {id = item.Id})">
+                                Modifica 
+                            </a>
+                            <a class="btn btn-primary d-block" style="color:white; width:100px;" href="@Url.Action("show",new {id = item.Id})">
+                                 dettagli 
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }else{
+        <p> spiacenti ma al momento non ci sono pizze in vendita. </p>
+    }
+
+</div>
+<a href="@Url.Action("Create")" class="btn btn-primary btn-outline-light text-center"> crea nuova</a> 
