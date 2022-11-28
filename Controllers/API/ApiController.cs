@@ -21,7 +21,7 @@ namespace la_mia_pizzeria_static.Controllers.API
 
             List<Pizza> pizze = _interface.ListPizze();
 
-            return Ok("prova se funziona");
+            return Ok(pizze);
         }
 
     }

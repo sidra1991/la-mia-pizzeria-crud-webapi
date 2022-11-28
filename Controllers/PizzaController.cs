@@ -22,7 +22,10 @@ namespace la_mia_pizzeria_static.Controllers
             repository = _repository;
         }
 
-
+        public IActionResult ApiIndex()
+        {
+            return View("../Apiviews/Index");
+        }
 
         // index
         // restituisce la view index con la lista delle pizze nel DB
