@@ -20,5 +20,6 @@ namespace la_mia_pizzeria_static.Controllers.Repository
         Category ThisCategory(int id);
         Ingredient ThisIngredient(int id);
         Pizza TihisPizza(int id);
+        List<Pizza> All();
     }
 }
