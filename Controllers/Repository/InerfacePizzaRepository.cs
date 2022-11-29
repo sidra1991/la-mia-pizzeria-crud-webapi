@@ -8,7 +8,7 @@ namespace la_mia_pizzeria_static.Controllers.Repository
         void AddCategory(Category category);
         void AddIngredient(Ingredient ingredient);
         void AddPizza(PizzaForm forms, List<Ingredient> ingredients);
-        void UploadPizza(PizzaForm forms, List<int> ingredients);
+        void UpdatePizza(PizzaForm forms, List<Ingredient> ingredients);
         List<Category> ListCategory();
         List<Ingredient> ListIngredient();
         void UpdateIngredient(int id,Ingredient ingredient);

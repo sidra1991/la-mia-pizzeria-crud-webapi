@@ -139,14 +139,14 @@ namespace la_mia_pizzeria_static.Controllers
             {
                 return NotFound();
             }
-            List<int> ingredients = new();
+            List<Ingredient> ingredients = new();
 
             foreach (int item in forms.SelectIngredient)
             {
-                ingredients.Add(item);
+                ingredients.Add(repository.ThisIngredient(item));
             }
 
-            repository.UploadPizza(forms , ingredients);
+            repository.UpdatePizza(forms , ingredients);
 
             return RedirectToAction("Index");
         }

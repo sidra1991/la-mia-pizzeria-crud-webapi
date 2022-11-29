@@ -45,20 +45,22 @@ namespace la_mia_pizzeria_static.Controllers.Repository
             db.Pizze.Remove(pizza);
             db.SaveChanges();
         }
-        public void UploadPizza(PizzaForm forms, List<int> ingredients)
+        public void UpdatePizza(PizzaForm forms, List<Ingredient> ingredients)
         {
-            Pizza uploadPizza = TihisPizza(forms.Pizza.Id);
-            uploadPizza.Name = forms.Pizza.Name;
-            uploadPizza.Description = forms.Pizza.Description;
-            uploadPizza.ImageAddress = forms.Pizza.ImageAddress;
-            uploadPizza.Price = forms.Pizza.Price;
-            uploadPizza.Category = forms.Pizza.Category;
-            uploadPizza.CategoryId = forms.Pizza.CategoryId;
-            foreach (int ing in ingredients)
+            Pizza updatePizza = new();
+            updatePizza.Id = forms.Pizza.Id;
+            updatePizza.Name = forms.Pizza.Name;
+            updatePizza.Description = forms.Pizza.Description;
+            updatePizza.ImageAddress = forms.Pizza.ImageAddress;
+            updatePizza.Price = forms.Pizza.Price;
+            updatePizza.Category = forms.Pizza.Category;
+            updatePizza.CategoryId = forms.Pizza.CategoryId;
+            updatePizza.Ingredients = new();
+            foreach (Ingredient ing in ingredients)
             {
-                uploadPizza.Ingredients.Add(ThisIngredient(ing));
+                updatePizza.Ingredients.Add(ing);
             }
-            db.Pizze.Update(uploadPizza); 
+            db.Pizze.Update(updatePizza); 
             db.SaveChanges();
         }
 
@@ -66,7 +68,7 @@ namespace la_mia_pizzeria_static.Controllers.Repository
         //funzioni DB per ingredienti
         public Ingredient ThisIngredient(int id)
         {
-            return db.Ingredientes.Where(i => i.Id == id).Include("Pizzas").FirstOrDefault();
+            return db.Ingredientes.Where(i => i.Id == id).FirstOrDefault();
         }
         public List<Ingredient> ListIngredient()
         {

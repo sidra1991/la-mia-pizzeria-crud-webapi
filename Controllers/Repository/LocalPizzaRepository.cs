@@ -41,7 +41,7 @@ namespace la_mia_pizzeria_static.Controllers.Repository
         {
             Pizzas.Remove(pizza);
         }
-        public void UploadPizza(PizzaForm forms, List<int> ingredients)
+        public void UpdatePizza(PizzaForm forms, List<Ingredient> ingredients)
         {
             Pizza uploadPizza = TihisPizza(forms.Pizza.Id);
             uploadPizza.Ingredients = new List<Ingredient>();
