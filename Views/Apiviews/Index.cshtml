@@ -36,7 +36,7 @@ ci siamo
                             </td>
 
                             <td>
-                                                bottoni da riproggettare
+                                    <a class="btn btn-primary" url="../Apiviews/Show/id=${item.id}" > show </a>
                             </td>
                         </tr>
                 </tbody>
@@ -61,24 +61,23 @@ ci siamo
         lister.innerHTML= "";
         listItem.forEach( item =>{
             lister.innerHTML += ` <table class=" table table-striped table-bordered border-primary">
-                    <tbody>
-                            <tr>
-                                <td>
-                                    <img src="${item.imageAddress}" class="card-img-top" alt="..." style="width:200px;">
-                                    <div class ="d-inline-block">
-                                        <h1>${item.name} ${item.price} €</h1>
-                                        <p>item.Description</p>
-                                    </div>
+                <tbody>
+                        <tr>
+                            <td>
+                                <img src="${item.imageAddress}" class="card-img-top" alt="..." style="width:200px;">
+                                <div class ="d-inline-block">
+                                    <h1>${item.name} ${item.price} €</h1>
+                                    <p>item.Description</p>
+                                </div>
 
-                                </td>
+                            </td>
 
-                                <td>
-                                                    bottoni da riproggettare
-                                </td>
-                            </tr>
-                    </tbody>
-                </table> `;
-
+                            <td>
+                                                bottoni da riproggettare
+                            </td>
+                        </tr>
+                </tbody>
+            </table> `;
         })
 
     }

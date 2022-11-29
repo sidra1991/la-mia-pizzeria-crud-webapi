@@ -24,5 +24,13 @@ namespace la_mia_pizzeria_static.Controllers.API
             return Ok(pizze);
         }
 
+        public IActionResult Showt(int id)
+        {
+
+            Pizza pizze = _interface.TihisPizza(id);
+
+            return Ok(pizze);
+        }
+
     }
 }
