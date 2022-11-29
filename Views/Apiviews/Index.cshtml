@@ -7,6 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
 ci siamo
 <h1 style="text-align:center">le mie pizze</h1>
+<input type="search" id="search" onkeyup="searchers(this)" />
 <div id="list" class="container p-2 border-2 " style="margin-top:20px;">
 
 
@@ -16,6 +17,7 @@ ci siamo
 <script type="text/javascript">
 
     const lister = document.getElementById("list")
+    let array = [];
 
     axios.get('/api/Api/Get').then(res =>{ 
         console.log(res.data);
@@ -38,8 +40,46 @@ ci siamo
                             </td>
                         </tr>
                 </tbody>
-            </table> `
+            </table> `;
+            array.push(item);
         });
     }).catch(error => {console.log("errore",error);})
+    array.forEach(item => {
+        console.log(item);
+    })
 
+    function searchers(text){
+        let listItem = [];
+
+        array.forEach(item => {
+            if (item.name.includes(text.value)) {
+                console.log(item.name);
+                listItem.push(item);
+            }
+        })
+        let lister = document.getElementById("list");
+        lister.innerHTML= "";
+        listItem.forEach( item =>{
+            lister.innerHTML += ` <table class=" table table-striped table-bordered border-primary">
+                    <tbody>
+                            <tr>
+                                <td>
+                                    <img src="${item.imageAddress}" class="card-img-top" alt="..." style="width:200px;">
+                                    <div class ="d-inline-block">
+                                        <h1>${item.name} ${item.price} €</h1>
+                                        <p>item.Description</p>
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                                    bottoni da riproggettare
+                                </td>
+                            </tr>
+                    </tbody>
+                </table> `;
+
+        })
+
+    }
 </script>
