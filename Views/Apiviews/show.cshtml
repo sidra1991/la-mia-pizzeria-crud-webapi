@@ -4,4 +4,20 @@
 @{
 
 }
-    sono qui
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <div id="app">
+
+        
+    </div>
+
+    <script type="text/javascript">
+
+    axios.get(`/API/api/Show/id`).then(res =>{
+        console.log( res )
+        //document.getElementById("app").innerHTML = ` <img src="${res.}" /> `
+
+    })
+    
+    
+    </script>
