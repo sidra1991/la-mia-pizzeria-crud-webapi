@@ -116,5 +116,31 @@ namespace la_mia_pizzeria_static.Controllers.Repository
             db.SaveChanges();
         }
 
+
+        ////funzioni DB per message
+        //public Category ThisMessage(int id)
+        //{
+        //    return db.Messages.Where(mes => mes.Id == id).FirstOrDefault();
+        //}
+        //public List<Category> ListMessage()
+        //{
+        //    return db.Messages.ToList();
+        //}
+        //public void AddMessages(Message message)
+        //{
+        //    db.Messages.Add(message);
+        //    db.SaveChanges();
+        //}
+        //public void UpdateMessage(int id, Message message)
+        //{
+        //    ThisMessage(id).Name = message.Name;
+        //    db.SaveChanges();
+
+        //}
+        //public void RemoveMessage(int id)
+        //{
+        //    db.Message.Remove(ThisMessagey(id));
+        //    db.SaveChanges();
+        //}
     }
 }
