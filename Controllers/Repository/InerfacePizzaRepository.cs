@@ -20,5 +20,9 @@ namespace la_mia_pizzeria_static.Controllers.Repository
         Category ThisCategory(int id);
         Ingredient ThisIngredient(int id);
         Pizza TihisPizza(int id);
+        List<Message> ListMessage();
+        Message ThisMessage(int id);
+        void UpdateMessage(int id, Message message);
+        void RemoveMessage(int id);
     }
 }

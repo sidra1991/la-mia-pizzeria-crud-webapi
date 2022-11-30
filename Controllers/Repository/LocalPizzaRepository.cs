@@ -9,6 +9,7 @@ namespace la_mia_pizzeria_static.Controllers.Repository
         public static List<Pizza> Pizzas = new();
         public static List<Ingredient> Ingredients = new();
         public static List<Category> Categories = new();
+        public static List<Message> Messages = new();
 
 
         public LocalPizzaRepository()
@@ -105,6 +106,28 @@ namespace la_mia_pizzeria_static.Controllers.Repository
         public void UpdateCategory(int id, Category category)
         {
             ThisCategory(category.Id).Name = category.Name;
+        }
+
+        //funzioni DB per message
+        public Message ThisMessage(int id)
+        {
+            return Messages.Where(post => post.Id == id).FirstOrDefault();
+        }
+        public List<Message> ListMessage()
+        {
+            return Messages.ToList();
+        }
+        public void AddMessage(Message message)
+        {
+            Messages.Add(message);
+        }
+        public void RemoveMessage(int id)
+        {
+            Messages.Remove(ThisMessage(id));
+        }
+        public void UpdateMessage(int id, Message message)
+        {
+            //ThisCategory(message.Id).Name = Messages.Name;
         }
     }
 }
