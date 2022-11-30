@@ -12,7 +12,33 @@
     </div>
 
     <div style="width:20%; height:800vh; border-left:2px solid black;" id="form">
-        
+
+        <form onsubmit="sendMessage(event)">
+
+            <div class="mb-3">
+                <label for="Name" class="form-label">Nome</label>
+                <input id="Name" type="text" class="form-control" />
+            </div>
+
+             <div class="mb-3">
+                <label for="email" class="form-label">email</label>
+                <input id="email" type="email" class="form-control" />
+            </div>
+
+            <div class="mb-3 form-check">
+                <label for="title" class="form-label">titolo</label>
+                <input id="title" type="text" />
+            </div>
+
+            <div class="mb-3">
+                <label for="text" class="form-label">testo messagio</label>
+                <textarea id="text" ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
     </div>
 
 
@@ -41,12 +67,32 @@
                             </tr>
                     </tbody>
                 </table> `;
-            array.push(item);
         });
     }).catch(error => { console.log("errore", error); })
     array.forEach(item => {
         console.log(item);
     })
+
+    function sendMessage(message){
+        message.preventDefault();
+        //debugger;
+        axios.post('/api/ApiMessage/Create',{
+            TitleMessage: document.getElementById("title").value,
+            Name: document.getElementById("Name").value,
+            Email: document.getElementById("email").value,
+            TextMessage: document.getElementById("text").value,
+        }).then(res=>{
+            console.log(Name);
+            console.log(Email);
+            console.log(Title);
+            console.log(Text);
+            console.log("successo");
+        }).catch(error => {
+
+            console.log(error.response.data.errors);
+        })
+
+    }
 
 
 </script>

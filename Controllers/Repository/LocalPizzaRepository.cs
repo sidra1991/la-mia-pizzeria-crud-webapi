@@ -117,7 +117,7 @@ namespace la_mia_pizzeria_static.Controllers.Repository
         {
             return Messages.ToList();
         }
-        public void AddMessage(Message message)
+        public void AddMessages(Message message)
         {
             Messages.Add(message);
         }

@@ -24,5 +24,6 @@ namespace la_mia_pizzeria_static.Controllers.Repository
         Message ThisMessage(int id);
         void UpdateMessage(int id, Message message);
         void RemoveMessage(int id);
+        void AddMessages(Message message);
     }
 }
