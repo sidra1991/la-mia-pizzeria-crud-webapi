@@ -8,6 +8,7 @@ namespace la_mia_pizzeria_static.data
     {
         public DbSet<Pizza>Pizze { get; set; }
         public DbSet<Category>Categoryes { get; set; }
+        public DbSet<Message> messages { get; set; }
 
         public DbSet<Ingredient> Ingredientes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
