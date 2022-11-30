@@ -19,7 +19,7 @@ ci siamo
     const lister = document.getElementById("list")
     let array = [];
 
-    axios.get('/api/Api/Get').then(res =>{ 
+    axios.get('/api/ApiPizza/Get').then(res =>{ 
         console.log(res.data);
         res.data.forEach(item => {
             console.log(item.id);

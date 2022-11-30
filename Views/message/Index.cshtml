@@ -2,6 +2,51 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+        Layout = "_Layout";
 }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
 
-sono i messaggi
+<div class=" container-fluid d-flex">
+    <div style="width:75%; height:800vh;" id="list">
+        
+    </div>
+
+    <div style="width:20%; height:800vh; border-left:2px solid black;" id="form">
+        
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+    let lister = document.getElementById("list");
+    lister.innerHTML = "";
+
+    axios.get('/api/ApiMessage/Get').then(res => {
+        console.log(res.data);
+        res.data.forEach(item => {
+            console.log(item.id);
+            lister.innerHTML += ` <table class=" table table-striped table-bordered border-primary">
+                    <tbody>
+                            <tr>
+                                <td>
+                                   <h2> ${item.name} </h2>
+                                   <h6> ${item.email} </h6>
+                                </td>
+
+                                <td>
+                                    <h3> ${item.titleMessage} <h3>
+                                    <p> ${item.textMessage} </p>
+                                </td>
+                            </tr>
+                    </tbody>
+                </table> `;
+            array.push(item);
+        });
+    }).catch(error => { console.log("errore", error); })
+    array.forEach(item => {
+        console.log(item);
+    })
+
+
+</script>
