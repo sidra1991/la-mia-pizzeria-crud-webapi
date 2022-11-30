@@ -18,21 +18,25 @@
             <div class="mb-3">
                 <label for="Name" class="form-label">Nome</label>
                 <input id="Name" type="text" class="form-control" />
+                <span class="error"></span>
             </div>
 
              <div class="mb-3">
                 <label for="email" class="form-label">email</label>
                 <input id="email" type="email" class="form-control" />
+                <span class="error"></span>
             </div>
 
             <div class="mb-3 form-check">
                 <label for="title" class="form-label">titolo</label>
                 <input id="title" type="text" />
+                <span class="error"></span>
             </div>
 
             <div class="mb-3">
                 <label for="text" class="form-label">testo messagio</label>
                 <textarea id="text" ></textarea>
+                <span class="error"></span>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -88,8 +92,10 @@
             console.log(Text);
             console.log("successo");
         }).catch(error => {
-
+            console.log(error.response.data);
             console.log(error.response.data.errors);
+            console.log(error.response.data.errors.TextMessage);
+
         })
 
     }
