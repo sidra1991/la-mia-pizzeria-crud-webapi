@@ -5,7 +5,7 @@ namespace la_mia_pizzeria_static.Controllers.message
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MessageApiController : ControllerBase
+    public class ApiMessageController : ControllerBase
     {
     }
 }

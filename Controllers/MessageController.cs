@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace la_mia_pizzeria_static.Controllers.message
+namespace la_mia_pizzeria_static.Controllers
 {
     public class MessageController : Controller
     {
         public IActionResult Index()
         {
-            return View();
+            return View("index");
         }
     }
 }

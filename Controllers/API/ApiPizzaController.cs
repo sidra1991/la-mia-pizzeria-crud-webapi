@@ -7,11 +7,11 @@ namespace la_mia_pizzeria_static.Controllers.API
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class ApiController : ControllerBase
+    public class ApiPizzaController : ControllerBase
     {
         public InerfacePizzaRepository _interface;
 
-        public ApiController(InerfacePizzaRepository repo) : base()
+        public ApiPizzaController(InerfacePizzaRepository repo) : base()
         {
             _interface = repo;
         }
