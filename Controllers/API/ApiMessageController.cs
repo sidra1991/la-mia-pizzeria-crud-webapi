@@ -40,5 +40,29 @@ namespace la_mia_pizzeria_static.Controllers.message
 
             return Ok(messages);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Message message)
+        {
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
+
+            if (_interface.ThisMessage(id) != null)
+            {
+                // ... aggiorniamo il nostro dato a DB
+                _interface.UpdateMessage(id, message);
+                List<Message> messages = _interface.ListMessage();
+
+                return Ok(messages);
+            }
+            else
+            {
+                // se non è stato trovato resituiamo che non esiste
+                return NotFound();
+            }
+
+        }
     }
 }

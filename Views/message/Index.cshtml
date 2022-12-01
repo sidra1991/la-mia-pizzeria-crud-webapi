@@ -51,36 +51,76 @@
 <script type="text/javascript">
     let lister = document.getElementById("list");
     lister.innerHTML = "";
-
     axios.get('/api/ApiMessage/Get').then(res => {
         console.log(res.data);
         res.data.forEach(item => {
+            
             console.log(item.id);
             lister.innerHTML += ` <table class=" table table-striped table-bordered border-primary">
                     <tbody>
                             <tr>
                                 <td>
                                    <h2> ${item.name} </h2>
+
                                    <h6> ${item.email} </h6>
                                 </td>
 
                                 <td>
                                     <h3> ${item.titleMessage} <h3>
                                     <p> ${item.textMessage} </p>
+
+                                        <button type="button" onclick="showForm(${item.id})"> modifica </button>
                                 </td>
                             </tr>
                     </tbody>
-                </table> `;
+                </table>
+                            <form onsubmit="updateMessage(${item.id}, event)" class="d-none" id="${item.id}" >
+                        <table class=" table table-striped table-bordered border-primary">
+                            <tbody>
+                                    <tr>
+                                        <td>
+                                            <label for="Name" class="form-label">Nome</label>
+                                                    <input id="NameUpdate" type="text" class="form-control" value="${item.name}" />
+                                            <span class="error"></span>
+
+                                            <label for="email" class="form-label">email</label>
+                                                    <input id="emailUpdate" type="email" class="form-control" value=" ${item.email}"/>
+                                            <span class="error"></span>
+                                        </td>
+
+                                        <td>
+                                            <label for="title" class="form-label">titolo</label>
+                                                <input id="titleUpdate" type="text" value=" ${item.titleMessage} " />
+                                            <span class="error"></span>
+
+                                            <label for="text" class="form-label">testo messagio</label>
+                                                <textarea id="textUpdate" ></textarea>
+                                            <span class="error"></span>
+
+
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </form>   
+                        `;
+                  
         });
     }).catch(error => { console.log("errore", error); })
     array.forEach(item => {
         console.log(item);
     })
 
+    function showForm(id){
+        var element = document.getElementById(`${id}`).classList.toggle("d-none");
+
+    }
+
     function sendMessage(message){
         message.preventDefault();
         //debugger;
-        axios.post('/api/ApiMessage/Create',{
+        axios.post('/api/ApiMessage/Create', {
             TitleMessage: document.getElementById("title").value,
             Name: document.getElementById("Name").value,
             Email: document.getElementById("email").value,
@@ -94,10 +134,38 @@
         }).catch(error => {
             console.log(error.response.data);
             console.log(error.response.data.errors);
-            console.log(error.response.data.errors.TextMessage);
+            //console.log(error.response.data.errors.TextMessage);
             error.foreach(item =>{
                 console.log(item);
             } )
+        })
+
+    }
+
+
+    function updateMessage(id,message) {
+        message.preventDefault();
+        console.log(id);
+        console.log(message.form);
+        debugger;
+        axios.post(`/api/ApiMessage/Put/${id}`, {
+            TitleMessage: document.getElementById("titleUpdate").value,
+            Name: document.getElementById("NameUpdate").value,
+            Email: document.getElementById("emailUpdate").value,
+            TextMessage: document.getElementById("textUpdate").value,
+        }).then(res => {
+            console.log(Name);
+            console.log(Email);
+            console.log(Title);
+            console.log(Text);
+            console.log("successo");
+        }).catch(error => {
+            console.log(error.response.data);
+            console.log(error.response.data.errors);
+            console.log(error.response.data.errors.TextMessage);
+            error.foreach(item => {
+                console.log(item);
+            })
         })
 
     }
