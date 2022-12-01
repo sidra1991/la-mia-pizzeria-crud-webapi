@@ -18,7 +18,7 @@ namespace la_mia_pizzeria_static.Controllers.Repository
 
 
         //funzioni DB per pizza
-        public Pizza TihisPizza(int id)
+        public Pizza ThisPizza(int id)
         {
             return db.Pizze.Where(Pizza => Pizza.Id == id).Include("Category").Include("Ingredients").FirstOrDefault();
         }
@@ -45,21 +45,10 @@ namespace la_mia_pizzeria_static.Controllers.Repository
             db.Pizze.Remove(pizza);
             db.SaveChanges();
         }
-        public void UpdatePizza(PizzaForm forms, List<Ingredient> ingredients)
+        public void UpdatePizza(Pizza pizza, List<Ingredient> ingredients)
         {
-            Pizza updatePizza = new();
-            updatePizza.Id = forms.Pizza.Id;
-            updatePizza.Name = forms.Pizza.Name;
-            updatePizza.Description = forms.Pizza.Description;
-            updatePizza.ImageAddress = forms.Pizza.ImageAddress;
-            updatePizza.Price = forms.Pizza.Price;
-            updatePizza.Category = forms.Pizza.Category;
-            updatePizza.CategoryId = forms.Pizza.CategoryId;
-            updatePizza.Ingredients = new();
-            foreach (Ingredient ing in ingredients)
-            {
-                updatePizza.Ingredients.Add(ing);
-            }
+            Pizza updatePizza = pizza;
+            updatePizza.Ingredients = ingredients.ToList();
             db.Pizze.Update(updatePizza); 
             db.SaveChanges();
         }

@@ -24,10 +24,11 @@ namespace la_mia_pizzeria_static.Controllers.API
             return Ok(pizze);
         }
 
-        public IActionResult Showt(int id)
+        [HttpGet("{id}")]
+        public IActionResult Show(int id)
         {
 
-            Pizza pizze = _interface.TihisPizza(id);
+            Pizza pizze = _interface.ThisPizza(id);
 
             return Ok(pizze);
         }

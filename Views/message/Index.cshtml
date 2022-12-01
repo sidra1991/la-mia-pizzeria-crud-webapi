@@ -74,7 +74,7 @@
                             </tr>
                     </tbody>
                 </table>
-                            <form onsubmit="updateMessage(${item.id}, event)" class="d-none" id="${item.id}" >
+                    <form onsubmit="updateMessage(${item.id}, event)" class="d-none" id="${item.id}" >
                         <table class=" table table-striped table-bordered border-primary">
                             <tbody>
                                     <tr>
@@ -148,24 +148,24 @@
         console.log(id);
         console.log(message.form);
         debugger;
-        axios.post(`/api/ApiMessage/Put/${id}`, {
-            TitleMessage: document.getElementById("titleUpdate").value,
-            Name: document.getElementById("NameUpdate").value,
-            Email: document.getElementById("emailUpdate").value,
-            TextMessage: document.getElementById("textUpdate").value,
+        axios.post (`/api/ApiMessage/Put/${id}`, {
+            //TitleMessage: document.getElementById("titleUpdate").value,
+            //Name: document.getElementById("NameUpdate").value,
+            //Email: document.getElementById("emailUpdate").value,
+            //TextMessage: document.getElementById("textUpdate").value,
         }).then(res => {
-            console.log(Name);
-            console.log(Email);
-            console.log(Title);
-            console.log(Text);
-            console.log("successo");
+            //console.log(Name);
+            //console.log(Email);
+            //console.log(Title);
+            //console.log(Text);
+            //console.log("successo");
         }).catch(error => {
-            console.log(error.response.data);
-            console.log(error.response.data.errors);
-            console.log(error.response.data.errors.TextMessage);
-            error.foreach(item => {
-                console.log(item);
-            })
+            //console.log(error.response.data);
+            //console.log(error.response.data.errors);
+            //console.log(error.response.data.errors.TextMessage);
+            //error.foreach(item => {
+            //    console.log(item);
+            //})
         })
 
     }

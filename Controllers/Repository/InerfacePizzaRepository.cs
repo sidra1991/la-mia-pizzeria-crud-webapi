@@ -8,7 +8,7 @@ namespace la_mia_pizzeria_static.Controllers.Repository
         void AddCategory(Category category);
         void AddIngredient(Ingredient ingredient);
         void AddPizza(PizzaForm forms, List<Ingredient> ingredients);
-        void UpdatePizza(PizzaForm forms, List<Ingredient> ingredients);
+        void UpdatePizza(Pizza pizza, List<Ingredient> ingredients);
         List<Category> ListCategory();
         List<Ingredient> ListIngredient();
         void UpdateIngredient(int id,Ingredient ingredient);
@@ -19,7 +19,7 @@ namespace la_mia_pizzeria_static.Controllers.Repository
         void UpdateCategory(int id, Category category);
         Category ThisCategory(int id);
         Ingredient ThisIngredient(int id);
-        Pizza TihisPizza(int id);
+        Pizza ThisPizza(int id);
         List<Message> ListMessage();
         Message ThisMessage(int id);
         void UpdateMessage(int id, Message message);

@@ -48,7 +48,7 @@ namespace la_mia_pizzeria_static.Controllers
         // si occupa di fornire i dettagli delle pizze
         public IActionResult Show(int id)
         {
-            return View(repository.TihisPizza(id));
+            return View(repository.ThisPizza(id));
         }
 
         //crerate
@@ -99,7 +99,7 @@ namespace la_mia_pizzeria_static.Controllers
         [Authorize]
         public IActionResult Update(int id)
         {
-            Pizza pizza = repository.TihisPizza(id);
+            Pizza pizza = repository.ThisPizza(id);
 
             if (pizza == null)
                 return NotFound();
@@ -139,7 +139,12 @@ namespace la_mia_pizzeria_static.Controllers
                 return View();
             }
 
-            Pizza pizza = repository.TihisPizza(id);
+            Pizza pizza = repository.ThisPizza(id);
+            pizza.Name = forms.Pizza.Name;
+            pizza.ImageAddress = forms.Pizza.ImageAddress;
+            pizza.Price = forms.Pizza.Price;
+            pizza.Category = forms.Pizza.Category;
+            pizza.CategoryId = forms.Pizza.CategoryId;
 
             if (pizza == null)
             {
@@ -152,7 +157,7 @@ namespace la_mia_pizzeria_static.Controllers
                 ingredients.Add(repository.ThisIngredient(item));
             }
 
-            repository.UpdatePizza(forms , ingredients);
+            repository.UpdatePizza(pizza , ingredients);
 
             return RedirectToAction("Index");
         }
@@ -163,7 +168,7 @@ namespace la_mia_pizzeria_static.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
-            Pizza pizza = repository.TihisPizza(id);
+            Pizza pizza = repository.ThisPizza(id);
 
             if (pizza == null)
             {
