@@ -11,9 +11,9 @@ namespace la_mia_pizzeria_static.Controllers.Repository
     {
         private PizzaDB db;
 
-        public DbPizzaRepository()
+        public DbPizzaRepository(PizzaDB _db)
         {
-            db = new PizzaDB();
+            db = _db;
         }
 
 

@@ -3,6 +3,7 @@ using la_mia_pizzeria_static.Controllers.Repository;
 using la_mia_pizzeria_static.data;
 using la_mia_pizzeria_static.Models;
 using la_mia_pizzeria_static.Models.Forms;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -53,6 +54,7 @@ namespace la_mia_pizzeria_static.Controllers
         //crerate
         //2 funzioni
         // si occupa di creare una nuova pizza nel DB
+        [Authorize]
         public IActionResult Create()
         {
             PizzaForm forms = new PizzaForm();  
@@ -94,6 +96,7 @@ namespace la_mia_pizzeria_static.Controllers
         //update
         // 2 funzioni
         // si occupa di modificare i dati nel DB riguardo una pizza
+        [Authorize]
         public IActionResult Update(int id)
         {
             Pizza pizza = repository.TihisPizza(id);
@@ -153,7 +156,7 @@ namespace la_mia_pizzeria_static.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         //delete
         //elimina una pizza daL DB
         [HttpPost]

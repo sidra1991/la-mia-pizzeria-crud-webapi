@@ -95,7 +95,9 @@
             console.log(error.response.data);
             console.log(error.response.data.errors);
             console.log(error.response.data.errors.TextMessage);
-
+            error.foreach(item =>{
+                console.log(item);
+            } )
         })
 
     }
